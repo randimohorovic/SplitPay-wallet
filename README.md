@@ -1,1 +1,3 @@
 # SplitPay-wallet
+
+SplitPay Wallet je decentralizirana web aplikacija razvijena na Ethereum blockchainu koja omogućuje grupama korisnika transparentno i sigurno upravljanje zajedničkim financijskim sredstvima. Sustav se temelji na pametnim ugovorima (Solidity) te omogućuje uplatu sredstava u zajednički fond, pregled stanja i evidenciju svih troškova. Sve transakcije i zapisi pohranjuju se na blockchainu, čime se osigurava nepromjenjivost i potpuna transparentnost. Projekt demonstrira praktičnu primjenu blockchain tehnologije u rješavanju problema zajedničkih troškova unutar grupa korisnika.
