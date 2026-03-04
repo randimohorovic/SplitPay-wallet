@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
-import "hardhat/console.sol";
-
 contract SplitPayWallet {
 
     address public owner;
@@ -53,9 +51,7 @@ contract SplitPayWallet {
         isMember[msg.sender] = true;
         members.push(msg.sender);
 
-        console.log(">> SplitPayWallet kreiran:", _fundName);
-        console.log("   owner:", msg.sender);
-        console.log("   potrebni glasovi:", _requiredApprovals);
+        
     }
 
     
@@ -67,7 +63,7 @@ contract SplitPayWallet {
         isMember[_member] = true;
         members.push(_member);
 
-        console.log(">> Dodan clan:", _member);
+       
         emit MemberAdded(_member);
     }
 
@@ -78,10 +74,6 @@ contract SplitPayWallet {
 
         balance                    += msg.value;
         contributions[msg.sender]  += msg.value;
-
-        console.log(">> Uplata od:", msg.sender);
-        console.log("   iznos (wei):", msg.value);
-        console.log("   ukupno u fondu (wei):", balance);
 
         emit Deposited(msg.sender, msg.value);
     }
@@ -103,11 +95,6 @@ contract SplitPayWallet {
         p.approvalCount = 0;
         p.executed    = false;
 
-        console.log(">> Novi prijedlog ID =", id);
-        console.log("   opis:", _description);
-        console.log("   iznos (wei):", _amount);
-        console.log("   predlozio:", msg.sender);
-
         emit ProposalCreated(id, _description, _amount, msg.sender);
     }
 
@@ -122,10 +109,6 @@ contract SplitPayWallet {
 
         p.voted[msg.sender] = true;
         p.approvalCount++;
-
-        console.log(">> Glas na prijedlog ID =", _id);
-        console.log("   glasac:", msg.sender);
-        console.log("   ukupno glasova:", p.approvalCount);
 
         emit Voted(_id, msg.sender, p.approvalCount);
 
@@ -147,10 +130,6 @@ contract SplitPayWallet {
 
         (bool success, ) = payable(p.proposedBy).call{value: p.amount}("");
         require(success, "Transfer nije uspio");
-
-        console.log(">> Izvrsenje prijedloga ID =", _id);
-        console.log("   primatelj:", p.proposedBy);
-        console.log("   iznos (wei):", p.amount);
 
         emit Executed(_id, p.description, p.amount, p.proposedBy);
     }
