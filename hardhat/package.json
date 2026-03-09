@@ -1,7 +1,7 @@
 {
   "name": "hardhat",
   "version": "1.0.0",
-  "description": "This project showcases a Hardhat project using `mocha` for tests and the `ethers` library for Ethereum interactions.",
+  "description": "SplitPay Wallet - decentralizirani zajednički novčanik za grupe korisnika",
   "main": "index.js",
   "directories": {
     "test": "test"

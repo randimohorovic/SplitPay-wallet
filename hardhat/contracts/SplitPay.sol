@@ -54,8 +54,6 @@ contract SplitPayWallet {
         
     }
 
-    
-
     function addMember(address _member) external onlyOwner {
         require(_member != address(0), "Neispravna adresa");
         require(!isMember[_member], "Vec je clan");
@@ -67,8 +65,6 @@ contract SplitPayWallet {
         emit MemberAdded(_member);
     }
 
-   
-
     function deposit() external payable onlyMember {
         require(msg.value > 0, "Iznos mora biti veci od 0");
 
@@ -77,8 +73,6 @@ contract SplitPayWallet {
 
         emit Deposited(msg.sender, msg.value);
     }
-
-    
 
     function createProposal(string calldata _description, uint _amount) external onlyMember {
         require(bytes(_description).length > 0, "Opis ne smije biti prazan");
@@ -98,8 +92,6 @@ contract SplitPayWallet {
         emit ProposalCreated(id, _description, _amount, msg.sender);
     }
 
-    
-
     function vote(uint _id) external onlyMember {
         require(_id < proposalCount, "Prijedlog ne postoji");
 
@@ -118,8 +110,6 @@ contract SplitPayWallet {
         }
     }
 
-    
-
     function _execute(uint _id) internal {
         Proposal storage p = proposals[_id];
         require(!p.executed,    "Vec izvrseno");
@@ -133,8 +123,6 @@ contract SplitPayWallet {
 
         emit Executed(_id, p.description, p.amount, p.proposedBy);
     }
-
- 
 
     function getMembers() external view returns (address[] memory) {
         return members;
